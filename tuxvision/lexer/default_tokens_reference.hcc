@@ -1,0 +1,1005 @@
+{
+    .t      = tux::lang::type::LineComment,
+    .s      = tux::lang::type::LineComment,
+    .m      = tux::lang::mnemonic::LineComment,
+    .name   = {"LineComment"},
+    .d      = tux::lang::operand::Identifier,
+    .cursor = {.begin = tux::lang::lexeme::LineComment },
+    .properties  = { .V = 0 }
+},
+{
+    .t      = tux::lang::type::BlocComment,
+    .s      = tux::lang::type::BlocComment,
+    .m      = tux::lang::mnemonic::BeginComment,
+    .name   = {"BlocComment"},
+    .d      = tux::lang::operand::Identifier,
+    .cursor = {.begin = tux::lang::lexeme::CommentBegin },
+    .properties  = { .V = 01 }
+},
+{
+    .t      = tux::lang::type::BlocComment,
+    .s      = tux::lang::type::BlocComment,
+    .m      = tux::lang::mnemonic::EndComment,
+    .name   = {"LineComment"},
+    .d      = tux::lang::operand::Identifier,
+    .cursor = {.begin = tux::lang::lexeme::CommentEnd },
+    .properties  = { .V = 1 }
+},
+{
+    .t      = tux::lang::type::Binary,
+    .s      = tux::lang::type::Operator|tux::lang::type::Binary,
+    .m      = tux::lang::mnemonic::LeftShift,
+    .name   = {"LeftShift"},
+    .d      = tux::lang::operand::Shift,
+    .cursor = {.begin = tux::lang::lexeme::LeftShift },
+    .properties  = { .V = 1 }
+},
+{
+    .t = tux::lang::type::Keyword,
+    .s = tux::lang::type::Keyword|tux::lang::type::Number|tux::lang::type::Const,
+    .m     = tux::lang::mnemonic::Null,
+    .name  = "Null",
+    .d     = tux::lang::operand::Identifier,
+    .cursor = {.begin = tux::lang::lexeme::Null },
+    .properties = { .V = 1 }
+},
+{
+    .t  = tux::lang::type::Prefix,
+    .s = tux::lang::type::Unary|tux::lang::type::Prefix|tux::lang::type::Operator,
+    .m     = tux::lang::mnemonic::UnShadow,
+    .name  = "Unshadow",
+    .d     = tux::lang::operand::Scope,
+    .cursor = {.begin = tux::lang::lexeme::Unshadow},
+    .properties = { .V = 1 }
+},
+{
+    .t = tux::lang::type::OpenPair,
+    .s = tux::lang::type::Binary|tux::lang::type::Operator|tux::lang::type::OpenPair|tux::lang::type::Punctuation,
+    .m     = tux::lang::mnemonic::OpenAbsOp, // |< x+1 >|;
+    //                               ~~
+    //                               ^
+    .name  = "OpenAbsOp",
+    .d     = tux::lang::operand::Pair,
+    .cursor   = {.begin = tux::lang::lexeme::AbsBegin },
+    .properties = { .V = 1 }
+},
+{
+    .t = tux::lang::type::ClosePair,
+    .s = tux::lang::type::Binary|tux::lang::type::Operator|tux::lang::type::OpenPair|tux::lang::type::Punctuation,
+    .m     = tux::lang::mnemonic::CloseAbsOp, // |< x+1 >|;
+    //                                       ~~
+    //                                       ^
+    .name  = "CloseAbsOp",
+    .d     = tux::lang::operand::Pair,
+    .cursor   = {.begin = tux::lang::lexeme::AbsEnd },
+    .properties = { .V = 1 }
+},
+{
+    .t = tux::lang::type::Binary,
+    .s = tux::lang::type::Binary|tux::lang::type::Operator,
+    .m     = tux::lang::mnemonic::Radical,
+    .name  = "Radical",
+    .d     = tux::lang::operand::Exponent,
+    .cursor   = {.begin = tux::lang::lexeme::Radical },
+    .properties = { .V = 1 }
+},
+{
+    .t = tux::lang::type::Binary,
+    .s = tux::lang::type::Binary|tux::lang::type::Operator,
+    .m     = tux::lang::mnemonic::Exponent,
+    .name    = "Exponent",
+    .d     = tux::lang::operand::Exponent,
+    .cursor   = {.begin = tux::lang::lexeme::Exponent },
+    .properties = { .V = 1 }
+},
+{
+    .t = tux::lang::type::Binary,
+    .s = tux::lang::type::Binary|tux::lang::type::Operator,
+    .m     = tux::lang::mnemonic::RightShift,
+    .name  = "RightShift",
+    .d     = tux::lang::operand::Shift,
+    .cursor   = {.begin = tux::lang::lexeme::RightShift },
+    .properties = { .V = 1 }
+},
+{
+    .t = tux::lang::type::Binary,
+    .s = tux::lang::type::Binary|tux::lang::type::Operator,
+    .m     = tux::lang::mnemonic::BinaryXor,
+    .name  = "BinaryXor",
+    .d     = tux::lang::operand::Bits,
+    .cursor   = {.begin = tux::lang::lexeme::Xor },
+    .properties = { .V = 1 }
+},
+{
+    .t = tux::lang::type::Prefix,
+    .s = tux::lang::type::Prefix|tux::lang::type::Operator|tux::lang::type::Unary,
+    .m     = tux::lang::mnemonic::Deref,
+    .name  = "Deref",
+    .d     = tux::lang::operand::Deref,
+    .cursor   = {.begin = tux::lang::lexeme::Deref },
+    .properties = { .V = 1 }
+},
+{
+    .t = tux::lang::type::Prefix,
+    .s = tux::lang::type::Unary|tux::lang::type::Prefix|tux::lang::type::Operator,
+    .m     = tux::lang::mnemonic::Deref,
+    .name  = "DerefUtf",
+    .d     = tux::lang::operand::Bits,
+    .cursor   = {.begin = "➪" },
+    .properties = { .V = 1 }
+},
+{
+    .t = tux::lang::type::Unary,
+    .s = tux::lang::type::Unary|tux::lang::type::Prefix|tux::lang::type::Operator,
+    .m     = tux::lang::mnemonic::Decr,
+    .name  = "Decr",
+    .d     = tux::lang::operand::Unary,
+    .cursor   = {.begin = tux::lang::lexeme::Decr },
+    .properties = { .V = 1 }
+},
+{
+    .t  = tux::lang::type::Unary,
+    .s = tux::lang::type::Unary|tux::lang::type::Prefix|tux::lang::type::Operator,
+    .m     = tux::lang::mnemonic::Incr,
+    .name  = "Incr",
+    .d     = tux::lang::operand::Unary,
+    .cursor   = {.begin = tux::lang::lexeme::Incr },
+    .properties = { .V = 1 }
+},
+{
+    .t  = tux::lang::type::Assign,
+    .s   = tux::lang::type::Keyword|tux::lang::type::Operator|tux::lang::type::Binary|tux::lang::type::Assign,
+    .m     = tux::lang::mnemonic::AssignAdd,
+    .name  = "AssignAdd",
+    .d     = tux::lang::operand::Assign,
+    .cursor   = {.begin = tux::lang::lexeme::AssignAdd},
+    .properties = {.V=1}
+},
+{
+    .t   = tux::lang::type::Assign,
+    .s    = tux::lang::type::Keyword|tux::lang::type::Operator|tux::lang::type::Binary|tux::lang::type::Assign,
+    .m      = tux::lang::mnemonic::AssignMul,
+    .name  = "AssignMul",
+    .d      = tux::lang::operand::Assign,
+    .cursor    = {.begin = tux::lang::lexeme::AssignMul},
+    .properties  = {.V = 1}
+},
+{
+    .t   = tux::lang::type::Assign,
+    .s    = tux::lang::type::Keyword|tux::lang::type::Operator|tux::lang::type::Binary|tux::lang::type::Assign,
+    .m      = tux::lang::mnemonic::AssignDiv,
+    .name  = "AssignDiv",
+    .d      = tux::lang::operand::Assign,
+    .cursor    = {.begin = tux::lang::lexeme::AssignDiv},
+    .properties  = {.V = 1}
+},
+{
+    .t   = tux::lang::type::Assign,
+    .s    = tux::lang::type::Keyword|tux::lang::type::Operator|tux::lang::type::Binary|tux::lang::type::Assign,
+    .m      = tux::lang::mnemonic::AssignMod,
+    .name  = "AssignMod",
+    .d      = tux::lang::operand::Assign,
+    .cursor    = {.begin = tux::lang::lexeme::AssignMod},
+    .properties  = {.V = 1}
+},
+{
+    .t   = tux::lang::type::Assign,
+    .s    = tux::lang::type::Keyword|tux::lang::type::Operator|tux::lang::type::Binary|tux::lang::type::Assign,
+    .m      = tux::lang::mnemonic::AssignOr,
+    .name  = "AssignOr",
+    .d      = tux::lang::operand::Assign,
+    .cursor    = {.begin = tux::lang::lexeme::AssignOr},
+    .properties  = {.V = 1}
+},
+{
+    .t   = tux::lang::type::Assign,
+    .s    = tux::lang::type::Keyword|tux::lang::type::Operator|tux::lang::type::Binary|tux::lang::type::Assign,
+    .m      = tux::lang::mnemonic::AssignXor,
+    .name  = "AssignXor",
+    .d      = tux::lang::operand::Assign,
+    .cursor    = {.begin = tux::lang::lexeme::AssignXor},
+    .properties  = {.V = 1}
+},
+{
+    .t   = tux::lang::type::Assign,
+    .s    = tux::lang::type::Keyword|tux::lang::type::Operator|tux::lang::type::Binary|tux::lang::type::Assign,
+    .m      = tux::lang::mnemonic::AssignC1,
+    .name  = "AssignC1",
+    .d      = tux::lang::operand::Assign,
+    .cursor    = {.begin = tux::lang::lexeme::AssignC1},
+    .properties  = {.V = 1}
+},
+{
+    .t   = tux::lang::type::Assign,
+    .s    = tux::lang::type::Keyword|tux::lang::type::Operator|tux::lang::type::Binary|tux::lang::type::Assign,
+    .m      = tux::lang::mnemonic::AssignLeftShift,
+    .name  = "AssignLeftShift",
+    .d      = tux::lang::operand::Assign,
+    .cursor    = {.begin = tux::lang::lexeme::AssignLShift},
+    .properties  = {.V = 1}
+},
+{
+    .t   = tux::lang::type::Assign,
+    .s    = tux::lang::type::Keyword|tux::lang::type::Operator|tux::lang::type::Binary|tux::lang::type::Assign,
+    .m      = tux::lang::mnemonic::AssignRightShift,
+    .name  = "AssignRightShift",
+    .d      = tux::lang::operand::Assign,
+    .cursor    = {.begin = tux::lang::lexeme::AssignRShift},
+    .properties  = {.V = 1}
+},
+{
+    .t   = tux::lang::type::Binary,
+    .s    = tux::lang::type::Operator|tux::lang::type::Binary|tux::lang::type::Bool,
+    .m      = tux::lang::mnemonic::GreaterEq,
+    .name  = "GreaterEq",
+    .d      = tux::lang::operand::Equality,
+    .cursor    = {.begin = tux::lang::lexeme::GreaterEqual},
+    .properties  = {.V = 1}
+},
+{
+    .t   = tux::lang::type::Binary,
+    .s    = tux::lang::type::Operator|tux::lang::type::Binary|tux::lang::type::Bool,
+    .m      = tux::lang::mnemonic::Equal,
+    .name  = "Equal",
+    .d      = tux::lang::operand::Equality,
+    .cursor    = {.begin = tux::lang::lexeme::Equal},
+    .properties  = {.V = 1}
+},
+{
+    .t   = tux::lang::type::Binary,
+    .s    = tux::lang::type::Operator|tux::lang::type::Binary|tux::lang::type::Bool,
+    .m      = tux::lang::mnemonic::NotEqual,
+    .name  = "NotEqual",
+    .d      = tux::lang::operand::Equality,
+    .cursor    = {.begin = tux::lang::lexeme::NotEqual},
+    .properties  = {.V = 1}
+},
+{
+    .t   = tux::lang::type::Binary,
+    .s    = tux::lang::type::Operator|tux::lang::type::Binary|tux::lang::type::Bool,
+    .m      = tux::lang::mnemonic::NotEqual,
+    .name  = "NotEqualAlt",
+    .d      = tux::lang::operand::Equality,
+    .cursor    = {.begin = lang::lexeme::NotEqualAlt},
+    .properties  = {.V = 1}
+},
+
+{
+    .t   = tux::lang::type::Binary,
+    .s    = tux::lang::type::Operator|tux::lang::type::Binary,
+    .m      = tux::lang::mnemonic::Add,
+    .name  = "Addition",
+    .d      = tux::lang::operand::Addition,
+    .cursor    = {.begin = tux::lang::lexeme::Addition},
+    .properties  = {.V = 1}
+},
+{
+    .t   = tux::lang::type::Binary,
+    .s    = tux::lang::type::Operator|tux::lang::type::Binary,
+    .m      = tux::lang::mnemonic::Sub,
+    .name  = "Subtract",
+    .d      = tux::lang::operand::Addition,
+    .cursor    = {.begin = tux::lang::lexeme::Sub},
+    .properties  = {.V = 1}
+},
+{
+    .t   = tux::lang::type::Binary,
+    .s    = tux::lang::type::Operator|tux::lang::type::Binary,
+    .m      = tux::lang::mnemonic::Mul,
+    .name  = "Multiply",
+    .d      = tux::lang::operand::Product,
+    .cursor    = {.begin = tux::lang::lexeme::Multiply},
+    .properties  = {.V = 1}
+},
+{
+    .t   = tux::lang::type::LineComment,
+    .s    = tux::lang::type::LineComment|tux::lang::type::Operator,
+    .m      = tux::lang::mnemonic::CommentCpp,
+    .name  = "CommentCpp",
+    .d      = tux::lang::operand::Noop_,
+    .cursor    = {.begin = tux::lang::lexeme::CommentCpp},
+    .properties  = {.V = 0}
+},
+{
+    .t   = tux::lang::type::Binary,
+    .s    = tux::lang::type::Operator|tux::lang::type::Binary,
+    .m      = tux::lang::mnemonic::Modulo,
+    .name  = "Modulo",
+    .d      = tux::lang::operand::Product,
+    .cursor    = {.begin = tux::lang::lexeme::Modulo},
+    .properties  = {.V = 1}
+},
+{
+    .t   = tux::lang::type::Binary,
+    .s    = tux::lang::type::Operator|tux::lang::type::Binary|tux::lang::type::Bool,
+    .m      = tux::lang::mnemonic::LessThan,
+    .name  = "LessThan",
+    .d      = tux::lang::operand::Equality,
+    .cursor    = {.begin = tux::lang::lexeme::LessThan},
+    .properties  = {.V = 1}
+},
+{
+    .t   = tux::lang::type::Binary,
+    .s    = tux::lang::type::Operator|tux::lang::type::Binary|tux::lang::type::Bool,
+    .m      = tux::lang::mnemonic::GreaterThan,
+    .name  = "GreaterThan",
+    .d      = tux::lang::operand::Equality,
+    .cursor    = {.begin = tux::lang::lexeme::GreaterThan},
+    .properties  = {.V = 1}
+},
+{
+    .t   = tux::lang::type::Assign,
+    .s    = tux::lang::type::Keyword|tux::lang::type::Operator|tux::lang::type::Binary|tux::lang::type::Assign,
+    .m      = tux::lang::mnemonic::Assign,
+    .name  = "Assign",
+    .d      = tux::lang::operand::Assign,
+    .cursor    = {.begin = tux::lang::lexeme::Assign},
+    .properties  = {.V = 1}
+},
+{
+    .t   = tux::lang::type::Binary,
+    .s    = tux::lang::type::Operator|tux::lang::type::Binary,
+    .m      = tux::lang::mnemonic::BinaryAnd,
+    .name  = "BinaryAnd",
+    .d      = tux::lang::operand::Bits,
+    .cursor    = {.begin = tux::lang::lexeme::BinaryAnd},
+    .properties  = {.V = 1}
+},
+{
+    .t   = tux::lang::type::Binary,
+    .s    = tux::lang::type::Operator|tux::lang::type::Binary,
+    .m      = tux::lang::mnemonic::BinaryOr,
+    .name  = "BinaryOr",
+    .d      = tux::lang::operand::Bits,
+    .cursor    = {.begin = tux::lang::lexeme::BinaryOr},
+    .properties  = {.V = 1}
+},
+{
+    .t   = tux::lang::type::Prefix,
+    .s    = tux::lang::type::Unary|tux::lang::type::Operator|tux::lang::type::Prefix,
+    .m      = tux::lang::mnemonic::C2, // Tow's complement
+    .name  = "TwoComplement",
+    .d      = tux::lang::operand::Prefix,
+    .cursor    = {.begin = tux::lang::lexeme::C2},
+    .properties  = {.V = 1}
+},
+{
+    .t   = tux::lang::type::Prefix,
+    .s    = tux::lang::type::Unary|tux::lang::type::Operator|tux::lang::type::Prefix,
+    .m      = tux::lang::mnemonic::C1, // Tow's complement
+    .name  = "OneComplement",
+    .d      = tux::lang::operand::Prefix,
+    .cursor    = {.begin = tux::lang::lexeme::C1},
+    .properties  = {.V = 1}
+},
+{
+    .t   = tux::lang::type::Unary,
+    .s    = tux::lang::type::Unary|tux::lang::type::Operator|tux::lang::type::Prefix,
+    .m      = tux::lang::mnemonic::BinaryNot, // Tow's complement
+    .name  = "BinaryNot",
+    .d      = tux::lang::operand::Prefix,
+    .cursor    = {.begin = tux::lang::lexeme::Not},
+    .properties  = {.V = 1}
+},
+{
+    .t   = tux::lang::type::Binary,
+    .s    = tux::lang::type::Operator|tux::lang::type::Binary|tux::lang::type::Bool,
+    .m      = tux::lang::mnemonic::LogicalAnd, // Tow's complement
+    .name  = "LogicalAnd",
+    .d      = tux::lang::operand::Bool_and,
+    .cursor    = {.begin = tux::lang::lexeme::BoolAnd},
+    .properties  = {.V = 1}
+},
+{
+    .t   = tux::lang::type::Binary,
+    .s    = tux::lang::type::Operator|tux::lang::type::Binary|tux::lang::type::Bool,
+    .m      = tux::lang::mnemonic::LogicalOr, // Tow's complement
+    .name  = "LogicalOr",
+    .d      = tux::lang::operand::Bool_or,
+    .cursor    = {.begin = tux::lang::lexeme::BoolOr},
+    .properties  = {.V = 1}
+},
+{
+    .t   = tux::lang::type::OpenPair,
+    .s    = tux::lang::type::Operator|tux::lang::type::Punctuation|tux::lang::type::OpenPair,
+    .m      = tux::lang::mnemonic::OpenPar, // Tow's complement
+    .name  = "OpenPar",
+    .d      = tux::lang::operand::Pair,
+    .cursor    = {.begin = tux::lang::lexeme::OpenPar},
+    .properties  = {.V = 1}
+},
+{
+    .t   = tux::lang::type::ClosePair,
+    .s    = tux::lang::type::Operator|tux::lang::type::Punctuation|tux::lang::type::ClosePair,
+    .m      = tux::lang::mnemonic::ClosePar, // Tow's complement
+    .name  = "ClosePar",
+    .d      = tux::lang::operand::Pair,
+    .cursor    = {.begin = tux::lang::lexeme::ClosePar},
+    .properties  = {.V = 1}
+},
+{
+    .t   = tux::lang::type::OpenPair,
+    .s    = tux::lang::type::Operator|tux::lang::type::Punctuation|tux::lang::type::OpenPair,
+    .m      = tux::lang::mnemonic::OpenIndex, // Tow's complement
+    .name  = "OpenIndex",
+    .d      = tux::lang::operand::Pair,
+    .cursor    = {.begin = tux::lang::lexeme::OpenIndex},
+    .properties  = {.V = 1}
+},
+{
+    .t   = tux::lang::type::ClosePair,
+    .s    = tux::lang::type::Operator|tux::lang::type::Punctuation|tux::lang::type::ClosePair,
+    .m      = tux::lang::mnemonic::CloseIndex, // Tow's complement
+    .name  = "CloseIndex",
+    .d      = tux::lang::operand::Pair,
+    .cursor    = {.begin = tux::lang::lexeme::CloseIndex},
+    .properties  = {.V = 1}
+},
+{
+    .t   = tux::lang::type::OpenPair,
+    .s    = tux::lang::type::Operator|tux::lang::type::Punctuation|tux::lang::type::OpenPair,
+    .m      = tux::lang::mnemonic::OpenBrace, // Tow's complement
+    .name  = "OpenBrace",
+    .d      = tux::lang::operand::Pair,
+    .cursor    = {.begin = tux::lang::lexeme::BraceBegin},
+    .properties  = {.V = 1}
+},
+{
+    .t   = tux::lang::type::ClosePair,
+    .s    = tux::lang::type::Operator|tux::lang::type::Punctuation|tux::lang::type::ClosePair,
+    .m      = tux::lang::mnemonic::CloseBrace, // Tow's complement
+    .name  = "CloseBrace",
+    .d      = tux::lang::operand::Pair,
+    .cursor    = {.begin = tux::lang::lexeme::BraceEnd},
+    .properties  = {.V = 1}
+},
+{
+    .t   = tux::lang::type::BlocComment,
+    .s    = tux::lang::type::BlocComment|tux::lang::type::Operator,
+    .m      = tux::lang::mnemonic::BeginComment, // Tow's complement
+    .name  = "BeginBlocComment",
+    .d      = tux::lang::operand::Noop_,
+    .cursor    = {.begin = tux::lang::lexeme::CommentBegin},
+    .properties  = {.V = 0}
+},
+{
+    .t   = tux::lang::type::BlocComment,
+    .s    = tux::lang::type::BlocComment|tux::lang::type::Operator,
+    .m      = tux::lang::mnemonic::EndComment, // Tow's complement
+    .name  = "EndBlocComment",
+    .d      = tux::lang::operand::Noop_,
+    .cursor    = {.begin = tux::lang::lexeme::CommentEnd},
+    .properties  = {.V = 0}
+},
+{
+    .t = tux::lang::type::Binary,
+    .s = tux::lang::type::Operator|tux::lang::type::Binary,
+    .m = tux::lang::mnemonic::Div,
+    .name  = "Division",
+    .d = tux::lang::operand::Product,
+    .cursor = {.begin = tux::lang::lexeme::Division},
+    .properties{.V=1}
+},
+{
+    .t = tux::lang::type::Punctuation,
+    .s = tux::lang::type::Operator|tux::lang::type::Binary|tux::lang::type::Punctuation,
+    .m = tux::lang::mnemonic::Comma,
+    .name  = "Comma",
+    .d = tux::lang::operand::Comma,
+    .cursor = {.begin = tux::lang::lexeme::Comma},
+    .properties{.V=1}
+},
+{
+    .t = tux::lang::type::Punctuation,
+    .s = tux::lang::type::Operator|tux::lang::type::Binary|tux::lang::type::Punctuation,
+    .m = tux::lang::mnemonic::Scope,
+    .name  = "Scope",
+    .d = tux::lang::operand::Scope,
+    .cursor = {.begin = tux::lang::lexeme::Scope},
+    .properties{.V=1}
+},
+{
+    .t = tux::lang::type::Punctuation,
+    .s = tux::lang::type::Punctuation,
+    .m = tux::lang::mnemonic::Semicolon,
+    .name  = "SemiColon",
+    .d = tux::lang::operand::Noop_,
+    .cursor = {.begin = tux::lang::lexeme::Semicolon},
+    .properties{.V=0}
+},
+{
+    .t = tux::lang::type::Punctuation,
+    .s = tux::lang::type::Operator|tux::lang::type::Binary|tux::lang::type::Punctuation,
+    .m = tux::lang::mnemonic::Colon,
+    .name  = "Colon",
+    .d = tux::lang::operand::Noop_,
+    .cursor = {.begin = tux::lang::lexeme::Colon},
+    .properties{.V=0}
+},
+{
+    .t = tux::lang::type::Binary,
+    .s = tux::lang::type::Operator|tux::lang::type::Binary|tux::lang::type::Punctuation,
+    .m = tux::lang::mnemonic::Range,
+    .name  = "Range",
+    .d = tux::lang::operand::Scope,
+    .cursor = {.begin = tux::lang::lexeme::Range},
+    .properties{.V=1}
+},
+{
+    .t = tux::lang::type::Postfix,
+    .s = tux::lang::type::Unary|tux::lang::type::Postfix|tux::lang::type::Operator,
+    .m = tux::lang::mnemonic::Factorial,
+    .name  = "Factorial",
+    .d = tux::lang::operand::Unary,
+    .cursor = {.begin = tux::lang::lexeme::Factorial},
+    .properties{.V=1}
+},
+{
+    .t = tux::lang::type::Prefix,
+    .s = tux::lang::type::Sign|tux::lang::type::Unary|tux::lang::type::Prefix|tux::lang::type::Operator,
+    .m = tux::lang::mnemonic::Positive,
+    .name  = "Positive",
+    .d = tux::lang::operand::Unary,
+    .cursor = {.begin = tux::lang::lexeme::Positive},
+    .properties{.V=1}
+},
+{
+    .t = tux::lang::type::Prefix,
+    .s = tux::lang::type::Sign|tux::lang::type::Unary|tux::lang::type::Prefix|tux::lang::type::Operator,
+    .m = tux::lang::mnemonic::Negative,
+    .name  = "Negative",
+    .d = tux::lang::operand::Unary,
+    .cursor = {.begin = tux::lang::lexeme::Negative},
+    .properties{.V=1}
+},
+{
+    .t = tux::lang::type::Text,
+    .s = tux::lang::type::Text|tux::lang::type::Leaf|tux::lang::type::Operator,
+    .m = tux::lang::mnemonic::SQuote,
+    .name  = "SingleQuote",
+    .d = tux::lang::operand::Identifier,
+    .cursor = {.begin = tux::lang::lexeme::SQuote},
+    .properties{.V=1}
+},
+{
+    .t = tux::lang::type::Text,
+    .s = tux::lang::type::Text|tux::lang::type::Leaf|tux::lang::type::Operator,
+    .m = tux::lang::mnemonic::DQuote,
+    .name  = "DoubleQuote",
+    .d = tux::lang::operand::Identifier,
+    .cursor = {.begin = tux::lang::lexeme::DQuote},
+    .properties{.V=1}
+},
+
+{
+    .t = tux::lang::type::Keyword,
+    .s =  tux::lang::type::Keyword|tux::lang::type::Type,
+    .m = tux::lang::mnemonic::Procedure,
+    .name  = "Procedure",
+    .d = tux::lang::operand::Identifier,
+    .cursor = {.begin = tux::lang::lexeme::Procedure},
+    .properties{.V=1}
+},
+{
+    .t = tux::lang::type::Keyword,
+    .s = tux::lang::type::Keyword|tux::lang::type::Type,
+    .m = tux::lang::mnemonic::Function,
+    .name  = "Function",
+    .d = tux::lang::operand::Identifier,
+    .cursor = {.begin = tux::lang::lexeme::Function},
+    .properties{.V=1}
+},
+
+
+
+{
+    .t = tux::lang::type::Keyword,
+    .s = tux::lang::type::Keyword|tux::lang::type::Operator|tux::lang::type::Binary,
+    .m = tux::lang::mnemonic::Ternary,
+    .name  = "Ternary",
+    .d = tux::lang::operand::Unary,
+    .cursor = {.begin = tux::lang::lexeme::Ternary},
+    .properties{.V=1}
+},
+{
+    .t = tux::lang::type::Prefix,
+    .s = tux::lang::type::Unary|tux::lang::type::Prefix|tux::lang::type::Operator,
+    .m = tux::lang::mnemonic::Hash,
+    .name  = "Hash",
+    .d = tux::lang::operand::Unary,
+    .cursor = {.begin = tux::lang::lexeme::Hash},
+    .properties{.V=1}
+},
+{
+    .t = tux::lang::type::Prefix,
+    .s = tux::lang::type::Unary|tux::lang::type::Prefix|tux::lang::type::Operator,
+    .m = tux::lang::mnemonic::Eos,
+    .name  = "EosMark",
+    .d = tux::lang::operand::Unary,
+    .cursor = {.begin = tux::lang::lexeme::Eos},
+    .properties{.V=1}
+},
+{
+    .t = tux::lang::type::Punctuation,
+    .s = tux::lang::type::Punctuation|tux::lang::type::Operator,
+    .m = tux::lang::mnemonic::Dot,
+    .name  = "Dot",
+    .d = tux::lang::operand::Scope,
+    .cursor = {.begin = tux::lang::lexeme::Dot},
+    .properties{.V=1}
+},
+{
+    .t = tux::lang::type::Keyword,
+    .s = tux::lang::type::Keyword,
+    .m = tux::lang::mnemonic::Return,
+    .name  = "Return",
+    .d = tux::lang::operand::Identifier,
+    .cursor = {.begin = tux::lang::lexeme::Return},
+    .properties{.V=0}
+},
+{
+    .t = tux::lang::type::Keyword,
+    .s = tux::lang::type::Keyword,
+    .m = tux::lang::mnemonic::If,
+    .name  = "If",
+    .d = tux::lang::operand::Identifier,
+    .cursor = {.begin = tux::lang::lexeme::If},
+    .properties{.V=0}
+},
+{
+    .t = tux::lang::type::Number,
+    .s = tux::lang::type::Number|tux::lang::type::Leaf|tux::lang::type::Float|tux::lang::type::Keyword|tux::lang::type::Const|tux::lang::type::Literal,
+    .m = tux::lang::mnemonic::Pi,
+    .name  = "Pi",
+    .d = tux::lang::operand::Identifier,
+    .cursor = {.begin = tux::lang::lexeme::Pi},
+    .properties{.V=1}
+},
+{
+    .t = tux::lang::type::Number,
+    .s = tux::lang::type::Number|tux::lang::type::Leaf|tux::lang::type::Float|tux::lang::type::Keyword|tux::lang::type::Const|tux::lang::type::Literal,
+    .m = tux::lang::mnemonic::Pi,
+    .name  = "PiUtf",
+    .d = tux::lang::operand::Identifier,
+    .cursor = {.begin = "π"},
+    .properties{.V=1,.U=1}
+},
+{
+    .t = tux::lang::type::Type,
+    .s = tux::lang::type::Number|tux::lang::type::Unary|tux::lang::type::Keyword|tux::lang::type::Prefix|tux::lang::type::Operator,
+    .m = tux::lang::mnemonic::Number,
+    .name  = "Number",
+    .d = tux::lang::operand::Identifier,
+    .cursor = {.begin = tux::lang::lexeme::Number},
+    .properties{.V=1}
+},
+{
+    .t = tux::lang::type::Type,
+    .s = tux::lang::type::U8|tux::lang::type::Keyword|tux::lang::type::Prefix|tux::lang::type::Operator|tux::lang::type::Type,
+    .m = tux::lang::mnemonic::U8,
+    .name  = "U8",
+    .d = tux::lang::operand::Identifier,
+    .cursor = {.begin = tux::lang::lexeme::U8},
+    .properties{.V=1}
+},
+{
+    .t = tux::lang::type::Type,
+    .s = tux::lang::type::U16|tux::lang::type::Unary|tux::lang::type::Keyword|tux::lang::type::Prefix|tux::lang::type::Operator|tux::lang::type::Type|tux::lang::type::Type,
+    .m = tux::lang::mnemonic::U16,
+    .name  = "U16",
+    .d = tux::lang::operand::Identifier,
+    .cursor = {.begin = tux::lang::lexeme::U16},
+    .properties{.V=1}
+},
+{
+    .t = tux::lang::type::Type,
+    .s = tux::lang::type::U32|tux::lang::type::Unary|tux::lang::type::Keyword|tux::lang::type::Prefix|tux::lang::type::Operator|tux::lang::type::Type,
+    .m = tux::lang::mnemonic::U32,
+    .name  = "U32",
+    .d = tux::lang::operand::Identifier,
+    .cursor = {.begin = tux::lang::lexeme::U32},
+    .properties{.V=1}
+},
+{
+    .t = tux::lang::type::Type,
+    .s = tux::lang::type::U64|tux::lang::type::Unary|tux::lang::type::Keyword|tux::lang::type::Prefix|tux::lang::type::Operator|tux::lang::type::Type,
+    .m = tux::lang::mnemonic::U64,
+    .name  = "U64",
+    .d = tux::lang::operand::Identifier,
+    .cursor = {.begin = tux::lang::lexeme::U64},
+    .properties{.V=1}
+},
+{
+    .t = tux::lang::type::Type,
+    .s = tux::lang::type::I8|tux::lang::type::Unary|tux::lang::type::Keyword|tux::lang::type::Prefix|tux::lang::type::Operator|tux::lang::type::Type,
+    .m = tux::lang::mnemonic::I8,
+    .name  = "I8",
+    .d = tux::lang::operand::Identifier,
+    .cursor = {.begin = tux::lang::lexeme::I8},
+    .properties{.V=1}
+},
+{
+    .t = tux::lang::type::Type,
+    .s = tux::lang::type::I16|tux::lang::type::Unary|tux::lang::type::Keyword|tux::lang::type::Prefix|tux::lang::type::Operator|tux::lang::type::Type,
+    .m = tux::lang::mnemonic::I16,
+    .name  = "I16",
+    .d = tux::lang::operand::Identifier, .cursor = {.begin = tux::lang::lexeme::I16},
+    .properties{.V=1}
+},
+{
+    .t = tux::lang::type::Type,
+    .s = tux::lang::type::I32|tux::lang::type::Unary|tux::lang::type::Keyword|tux::lang::type::Prefix|tux::lang::type::Operator|tux::lang::type::Type,
+    .m = tux::lang::mnemonic::I32,
+    .name  = "I32",
+    .d = tux::lang::operand::Identifier,
+    .cursor = {.begin = tux::lang::lexeme::I32},
+    .properties{.V=1}
+},
+{
+    .t = tux::lang::type::Type,
+    .s = tux::lang::type::I64|tux::lang::type::Unary|tux::lang::type::Keyword|tux::lang::type::Prefix|tux::lang::type::Operator|tux::lang::type::Type,
+    .m = tux::lang::mnemonic::I64,
+    .name  = "I64",
+    .d = tux::lang::operand::Identifier,
+    .cursor = {.begin = tux::lang::lexeme::I64},
+    .properties{.V=1}
+},
+{
+    .t = tux::lang::type::Type,
+    .s = tux::lang::type::Float|tux::lang::type::Unary|tux::lang::type::Keyword|tux::lang::type::Prefix|tux::lang::type::Operator|tux::lang::type::Type,
+    .m = tux::lang::mnemonic::Float,
+    .name  = "Float",
+    .d = tux::lang::operand::Identifier,
+    .cursor = {.begin = tux::lang::lexeme::Float},
+    .properties{.V=1}
+},
+{
+    .t = tux::lang::type::Type,
+    .s = tux::lang::type::Text|tux::lang::type::Unary|tux::lang::type::Keyword|tux::lang::type::Prefix|tux::lang::type::Operator|tux::lang::type::Type,
+    .m = tux::lang::mnemonic::String,
+    .name  = "String",
+    .d = tux::lang::operand::Identifier,
+    .cursor = {.begin = tux::lang::lexeme::String},
+    .properties{.V=1}
+},
+{
+    .t = tux::lang::type::Keyword,
+    .s = tux::lang::type::Keyword,
+    .m = tux::lang::mnemonic::Then,
+    .name  = "Then",
+    .d = tux::lang::operand::Identifier,
+    .cursor = {.begin = tux::lang::lexeme::Then},
+    .properties{.V=0}
+},
+{
+    .t = tux::lang::type::Keyword,
+    .s = tux::lang::type::Keyword,
+    .m = tux::lang::mnemonic::Else,
+    .name  = "Else",
+    .d = tux::lang::operand::Identifier,
+    .cursor = {.begin = tux::lang::lexeme::Else},
+    .properties{.V=0}
+},
+{
+    .t = tux::lang::type::Keyword,
+    .s = tux::lang::type::Keyword|tux::lang::type::Const,
+    .m = tux::lang::mnemonic::Const,
+    .name  = "Const",
+    .d = tux::lang::operand::Identifier,
+    .cursor = {.begin = tux::lang::lexeme::Const},
+    .properties{.V=0}
+},
+{
+    .t = tux::lang::type::Keyword,
+    .s = tux::lang::type::Keyword,
+    .m = tux::lang::mnemonic::Include,
+    .name  = "Include",
+    .d = tux::lang::operand::Identifier,
+    .cursor = {.begin = tux::lang::lexeme::Include},
+    .properties{.V=0}
+},
+{
+    .t = tux::lang::type::Keyword,
+    .s = tux::lang::type::Keyword,
+    .m = tux::lang::mnemonic::Amu,
+    .name  = "Amu",
+    .d = tux::lang::operand::Identifier,
+    .cursor = {.begin = tux::lang::lexeme::Amu},
+    .properties{.V=0}
+},
+{
+    .t = tux::lang::type::Prefix,
+    .s = tux::lang::type::Unary|tux::lang::type::Prefix|tux::lang::type::Operator,
+    .m = tux::lang::mnemonic::Address,
+    .name  = "AddressOf",
+    .d = tux::lang::operand::Unary,
+    .cursor = {.begin = tux::lang::lexeme::Address},.properties{.V=1}
+},
+{
+    .t = tux::lang::type::Prefix,
+    .s = tux::lang::type::Unary|tux::lang::type::Prefix|tux::lang::type::Operator,
+    .m = tux::lang::mnemonic::Prime,
+    .name  = "Prime",
+    .d = tux::lang::operand::Unary,
+    .cursor = {.begin = tux::lang::lexeme::Prime},
+    .properties{.V=1}
+},
+{
+    .t = tux::lang::type::Keyword,
+    .s = tux::lang::type::Keyword,
+    .m = tux::lang::mnemonic::Do,
+    .name  = "Do",
+    .d = tux::lang::operand::Noop_,
+    .cursor = {.begin = tux::lang::lexeme::Do},
+    .properties{.V=0}
+},
+{
+    .t = tux::lang::type::Keyword,
+    .s = tux::lang::type::Keyword,
+    .m = tux::lang::mnemonic::While,
+    .name  = "While",
+    .d = tux::lang::operand::Noop_,
+    .cursor = {.begin = tux::lang::lexeme::While},
+    .properties{.V=0}
+},
+{
+    .t = tux::lang::type::Keyword,
+    .s = tux::lang::type::Keyword,
+    .m = tux::lang::mnemonic::For,
+    .name  = "For",
+    .d = tux::lang::operand::Noop_,
+    .cursor = {.begin = tux::lang::lexeme::For},
+    .properties{.V=0}
+},
+{
+    .t = tux::lang::type::Keyword,
+    .s = tux::lang::type::Keyword,
+    .m = tux::lang::mnemonic::Until,
+    .name  = "Until",
+    .d = tux::lang::operand::Noop_,
+    .cursor = {.begin = tux::lang::lexeme::Until},
+    .properties{.V=0}
+},
+{
+    .t = tux::lang::type::Keyword,
+    .s = tux::lang::type::Keyword,
+    .m = tux::lang::mnemonic::Repeat,
+    .name  = "Repeat",
+    .d = tux::lang::operand::Noop_,
+    .cursor = {.begin = tux::lang::lexeme::Repeat},
+    .properties{.V=0}
+},
+{
+    .t = tux::lang::type::Keyword,
+    .s = tux::lang::type::Keyword,
+    .m = tux::lang::mnemonic::Switch,
+    .name  = "Switch",
+    .d = tux::lang::operand::Noop_,
+    .cursor = {.begin = tux::lang::lexeme::Switch},
+    .properties{.V=0}
+},
+{
+    .t = tux::lang::type::Keyword,
+    .s = tux::lang::type::Keyword,
+    .m = tux::lang::mnemonic::Case,
+    .name  = "Case",
+    .d = tux::lang::operand::Noop_,
+    .cursor = {.begin = tux::lang::lexeme::Case},
+    .properties{.V=0}
+},
+{
+    .t = tux::lang::type::Keyword,
+    .s = tux::lang::type::Keyword,
+    .m = tux::lang::mnemonic::Type,
+    .name  = "Type",
+    .d = tux::lang::operand::Noop_,
+    .cursor = {.begin = tux::lang::lexeme::Type},
+    .properties{.V=0}
+},
+{
+    .t = tux::lang::type::Prefix,
+    .s = tux::lang::type::Unary|tux::lang::type::Prefix|tux::lang::type::Leaf|tux::lang::type::Keyword|tux::lang::type::Operator|tux::lang::type::Hex,
+    .m = tux::lang::mnemonic::LowHex,
+    .name  = "LowHex",
+    .d = tux::lang::operand::Noop_,
+    .cursor = {.begin = tux::lang::lexeme::LowHex},
+    .properties{.V=1}
+},
+{
+    .t = tux::lang::type::Prefix,
+    .s = tux::lang::type::Unary|tux::lang::type::Prefix|tux::lang::type::Leaf|tux::lang::type::Keyword|tux::lang::type::Operator|tux::lang::type::Hex,
+    .m = tux::lang::mnemonic::UpHex,
+    .name  = "UpHex",
+    .d = tux::lang::operand::Noop_,
+    .cursor = {.begin = tux::lang::lexeme::UpHex},
+    .properties{.V=1}
+},
+{
+    .t = tux::lang::type::Prefix,
+    .s = tux::lang::type::Unary|tux::lang::type::Prefix|tux::lang::type::Operator,
+    .m = tux::lang::mnemonic::Cosinus,
+    .name  = "Cosinus",
+    .d = tux::lang::operand::Unary,
+    .cursor = {.begin = tux::lang::lexeme::Cosinus},
+    .properties{.V=1}
+},
+{
+    .t = tux::lang::type::Prefix,
+    .s = tux::lang::type::Keyword|tux::lang::type::Unary|tux::lang::type::Prefix|tux::lang::type::Operator,
+    .m = tux::lang::mnemonic::ArcCosinus,
+    .name  = "ArcCosinus",
+    .d = tux::lang::operand::Unary,
+    .cursor = {.begin = tux::lang::lexeme::ArcCosinus},
+    .properties{.V=1}
+},
+{
+    .t = tux::lang::type::Prefix,
+    .s = tux::lang::type::Keyword|tux::lang::type::Unary|tux::lang::type::Prefix|tux::lang::type::Operator,
+    .m = tux::lang::mnemonic::Tangent,
+    .name  = "Tangent",
+    .d = tux::lang::operand::Unary,
+    .cursor = {.begin = tux::lang::lexeme::Tangent},
+    .properties{.V=1}
+},
+{
+    .t = tux::lang::type::Prefix,
+    .s = tux::lang::type::Keyword|tux::lang::type::Unary|tux::lang::type::Prefix|tux::lang::type::Operator,
+    .m = tux::lang::mnemonic::ArcTangent,
+    .name  = "ArcTangent",
+    .d = tux::lang::operand::Unary,
+    .cursor = {.begin = tux::lang::lexeme::ArcTangent},
+    .properties{.V=1}
+},
+{
+    .t = tux::lang::type::Prefix,
+    .s = tux::lang::type::Keyword|tux::lang::type::Unary|tux::lang::type::Prefix|tux::lang::type::Operator,
+    .m = tux::lang::mnemonic::Sinus,
+    .name  = "Sinus",
+    .d = tux::lang::operand::Unary,
+    .cursor = {.begin = tux::lang::lexeme::Sinus},
+    .properties{.V=1}
+},
+{
+    .t = tux::lang::type::Prefix,
+    .s = tux::lang::type::Keyword|tux::lang::type::Unary|tux::lang::type::Prefix|tux::lang::type::Operator,
+    .m = tux::lang::mnemonic::ArcSinus,
+    .name  = "ArcSinus",
+    .d = tux::lang::operand::Unary,
+    .cursor = {.begin = tux::lang::lexeme::ArcSinus},
+    .properties{.V=1}
+},
+{
+    .t = tux::lang::type::Keyword,
+    .s = tux::lang::type::Keyword,
+    .m = tux::lang::mnemonic::Object,
+    .name  = "Object",
+    .d = tux::lang::operand::Identifier,
+    .cursor = {.begin = tux::lang::lexeme::Object},
+    .properties{.V=0}
+},
+{
+    .t = tux::lang::type::Keyword,
+    .s = tux::lang::type::Keyword,
+    .m = tux::lang::mnemonic::Static,
+    .name  = "Static",
+    .d = tux::lang::operand::Identifier,
+    .cursor = {.begin = tux::lang::lexeme::Static},
+    .properties{.V=0}
+},
+{
+    .t = tux::lang::type::Keyword,
+    .s = tux::lang::type::Keyword,
+    .m = tux::lang::mnemonic::This,
+    .name  = "This",
+    .d = tux::lang::operand::Identifier,
+    .cursor = {.begin = tux::lang::lexeme::This},
+    .properties{.V=1}
+},{
+      .t = tux::lang::type::Type,
+      .s = tux::lang::type::Keyword|tux::lang::type::Void,
+      .m = tux::lang::mnemonic::This,
+      .name  = "Void",
+      .d = tux::lang::operand::Identifier,
+      .cursor = {.begin = tux::lang::lexeme::Void},
+      .properties{.V=0}
+  }
