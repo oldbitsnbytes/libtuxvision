@@ -28,9 +28,10 @@ namespace tux::lang::est
 /*!
  * @brief Arithmetic Logical Unit
  *
+ * @note Seriously, I am wondering if I could simply implement std::any/std::variant+visitors for handling abstract values in arithmetic and scripting function operations between tux::lang::ynod objects...
  *
  
- * @author &copy; 2014(using union),2020(using std::any),2022(back to union); Serge Lussier, oldlonecoder/bretzel/Bretzelus/Bretzel, (lussier.serge@gmail.com/serge.lussier@oldlonecoder.club)
+ * @author &copy; 2014(using union),2020(using std::any),2022(back to union); Serge Lussier, oldbitsnbytes/bretzel/Bretzelus/Bretzel, (lussier.serge@gmail.com/serge.lussier@oldbitsnbytes.club)
  *
  */
 
